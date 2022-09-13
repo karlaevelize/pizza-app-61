@@ -38,11 +38,14 @@ export const pizzaSlice = createSlice({
   reducers: {
     // to do
     addPizza: (state, action) => {
+      // console.log("action", action)
+      const newPizza = {...action.payload, id: state.allPizzas.length + 1, bought: 0}
+      state.allPizzas.push(newPizza)
     },
   },
 });
 
-export const { addPizza, clearPizza, setPosts } =
+export const { addPizza } =
   pizzaSlice.actions;
 
 export default pizzaSlice.reducer;
