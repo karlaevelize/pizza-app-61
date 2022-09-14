@@ -18,7 +18,7 @@ const AddPizzaForm = () => {
 
   return (
     <div>
-      Add Pizza Form
+      <b>Add Pizza Form</b>
       <form onSubmit={handleSubmit}>
         <p>
           Name: <input value={name} onChange={(event) => setName(event.target.value)} />

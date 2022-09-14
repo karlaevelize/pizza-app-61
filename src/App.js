@@ -1,16 +1,15 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom"
-import PizzaList from "./pages/PizzaList";
-import Navbar from "./components/Navbar";
+import AddPizzaForm from "./components/AddPizzaForm";
+import PizzaList from "./components/PizzaList";
+import Restaurants from "./components/Restaurants";
 
 function App() {
 
   return (
     <div className="App">
-      <Navbar/>
-      <Routes>
-        <Route path="/pizzas" element={<PizzaList/>}/>
-      </Routes>
+      <Restaurants/>
+      <AddPizzaForm/>
+      <PizzaList/>
     </div>
   );
 }

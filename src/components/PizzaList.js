@@ -2,7 +2,6 @@ import { selectPizzas } from "../store/pizzas/selectors"
 import { selectUser } from "../store/user/selectors"  
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../store/user/slice"
-import AddPizzaForm from "../components/AddPizzaForm";
 
 const PizzaList = () => {
 
@@ -21,7 +20,6 @@ const PizzaList = () => {
   return (
     <div>
       <h1>Pizza Explorer</h1>
-      <AddPizzaForm/>
       {!pizzas ? "Loading" : pizzas.map(pizza => {
         return (
           <div style={{ maxWidth: 300, margin: "auto" }} key={pizza.id}>
