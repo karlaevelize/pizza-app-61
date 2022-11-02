@@ -1,15 +1,17 @@
 import "./App.css";
-import AddPizzaForm from "./components/AddPizzaForm";
-import PizzaList from "./components/PizzaList";
-import Restaurants from "./components/Restaurants";
+import { Routes, Route } from "react-router-dom";
+import PizzaList from "./pages/PizzaList";
+import PostsPage from "./pages/PostsPage";
+import PostDetails from "./pages/PostDetails";
 
 function App() {
-
   return (
     <div className="App">
-      <Restaurants/>
-      <AddPizzaForm/>
-      <PizzaList/>
+      <Routes>
+        <Route path="/" element={<PostsPage />} />
+        <Route path="/post/:id" element={<PostDetails />} />
+        <Route path="/pizzas" element={<PizzaList />} />
+      </Routes>
     </div>
   );
 }
