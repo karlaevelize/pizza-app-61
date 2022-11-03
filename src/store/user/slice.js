@@ -3,7 +3,9 @@ import { createSlice, current } from "@reduxjs/toolkit";
 const initialState = {
   name: "Ford Prefect",
   id: 42,
-  favorites: [1, 2]
+  favorites: [1, 2],
+  token: localStorage.getItem("token"),
+  profile: null
 };
 
 export const userSlice = createSlice({
@@ -24,9 +26,20 @@ export const userSlice = createSlice({
       // console.log("new array", newFavoritesArray)
       state.favorites = newFavoritesArray
     },
+    loginSuccess: (state, action) => {
+      // console.log("action login", action)
+      const { token, profile } = action.payload
+      state.token = token
+      state.profile = profile
+    },
+    logout: (state) => {
+      localStorage.removeItem("token")
+      state.token = null
+      state.profile = null
+    }
   },
 });
 
-export const { toggleFavorite } = userSlice.actions;
+export const { toggleFavorite, loginSuccess, logout } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { selectPosts } from "../store/posts/selectors";
 import { fetchPosts } from "../store/posts/thunks";
+import { selectToken } from "../store/user/selectors";
 
 const PostsPage = () => {
   //Goal: Display a list of posts on the Posts Page
@@ -17,17 +19,24 @@ const PostsPage = () => {
   //5. Write a selector and import to display the data
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const posts = useSelector(selectPosts);
-  console.log(posts);
+  // console.log(posts);
+  const token = useSelector(selectToken)
 
   useEffect(() => {
     dispatch(fetchPosts());
   }, []);
 
+  if (!token){
+    navigate("/login")
+  }
+
   return (
     <div>
       <h1>Posts Page</h1>
+      {token && <input/>}
       {!posts
         ? "Loading"
         : posts.map((post) => {
